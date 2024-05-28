@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artifical Intelligence Thread</title>
+    <style>
+         body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 200px;
+        }
+        .header {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #0078d7;
+        }
+        .box {
+            width: 100%;
+            min-height: 60px;
+            margin: 5px 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            cursor: pointer;
+            box-sizing: border-box;
+            background-color: #fff;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .box:hover {
+            background-color: #f0f8ff;
+        }
+        .box.selected {
+            background-color: #0078d7;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .selected-text {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+            color: #0078d7;
+        }
+        .title {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #0078d7;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        #highlightedTextDisplay {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.2em;
+            color: #0078d7;
+        }
+    </style>
+    </head>
+<body>
+    
+ <div class="title">   
+    <h1>Artificial Intelligence Thread</h1><br />
+</div>
+
+<div class="container">
+<div class="column" id="column1">
+    <div class="header">I'm Using...</div>
+    <div class="box" onclick="selectBox(1, 0, 'Copilots and Microsoft products')">Copilots and Microsoft products</div>
+    <div class="box" onclick="selectBox(1, 1, 'Chat-GPT')">Chat-GPT</div>
+    <div class="box" onclick="selectBox(1, 2, 'AI Art generators')">AI Art generators</div>
+    <div class="box" onclick="selectBox(1, 3, 'None')">None</div>
+    <div class="selected-text" id="selected1"></div>
+</div>
+
+<div class="column" id="column2">
+    <div class="header">Because...</div>
+    <div class="box" onclick="selectBox(2, 0, 'it boosts my productivity')">it boosts my productivity</div>
+    <div class="box" onclick="selectBox(2, 1, 'everybody uses it')">everybody uses it</div>
+    <div class="box" onclick="selectBox(2, 2, 'I dont trust it')">I dont trust it</div>
+    <div class="box" onclick="selectBox(2, 3, 'helps me with my business')">helps me with my business</div>
+    <div class="box" onclick="selectBox(2, 4, 'its more accurate than a human')">its more accurate than a human</div>
+    <div class="box" onclick="selectBox(2, 5, 'it helps me in everyday life')">it helps me in everyday life</div>
+    <div class="box" onclick="selectBox(2, 6, 'I dont need it')">I dont need it</div>
+    <div class="box" onclick="selectBox(2, 7, 'its not good enough')">its not good enough</div>
+    <div class="selected-text" id="selected2"></div>
+</div>
+
+<div class="column" id="column3">
+    <div class="header">When will AI be self-aware?</div>
+    <div class="box" onclick="selectBox(3, 0, 'It already is')">It already is</div>
+    <div class="box" onclick="selectBox(3, 1, 'Soon')">Soon</div>
+    <div class="box" onclick="selectBox(3, 2, 'In 10 years')">In 10 years</div>
+    <div class="box" onclick="selectBox(3, 3, 'In 50 years')">In 50 years</div>
+    <div class="box" onclick="selectBox(3, 4, 'Never')">ever</div>
+    <div class="selected-text" id="selected3"></div>
+</div>
+
+<div class="column" id="column4">
+    <div class="header">In the future AI will...</div>
+    <div class="box" onclick="selectBox(4, 0, 'help society strive')">help society strive</div>
+    <div class="box" onclick="selectBox(4, 1, 'fundamentaly change society')">fundamentaly change society</div>
+    <div class="box" onclick="selectBox(4, 2, 'lead to a catastrophe')">lead to a catastrophe</div>
+    <div class="box" onclick="selectBox(4, 3, 'change the way people work, live and communicate')">change the way people work, live and communicate</div>
+    <div class="box" onclick="selectBox(4, 4, 'become an unavoidable companion')">become an unavoidable companion</div>
+    <div class="selected-text" id="selected4"></div>
+</div>
+
+<div class="column" id="column5">
+    <div class="header">In the future society should...</div>
+    <div class="box" onclick="selectBox(5, 0, 'lead AI development to computer scientists')">lead AI development to computer scientists</div>
+    <div class="box" onclick="selectBox(5, 1, 'not be afraid of the impact of AI developmenr and use')">not be afraid of the impact of AI developmenr and use</div>
+    <div class="box" onclick="selectBox(5, 2, 'regulate the development and use of AI')">regulate the development and use of AI</div>
+    <div class="box" onclick="selectBox(5, 3, 'not restrict the development and use of AI')">not restrict the development and use of AI</div>
+    <div class="selected-text" id="selected5"></div>
+</div>
+
+
+
+<div id="highlightedTextDisplay" style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); background: #f0f0f0; padding: 10px; border: 1px solid #ccc;">
+    <span id="highlightedText"></span>
+</div>
+
+<svg id="connector">
+    <line x1="0" y1="0" x2="0" y2="0" stroke="black" stroke-width="2" id="line1"></line>
+    <line x1="0" y1="0" x2="0" y2="0" stroke="black" stroke-width="2" id="line2"></line>
+    <line x1="0" y1="0" x2="0" y2="0" stroke="black" stroke-width="2" id="line3"></line>
+    <line x1="0" y1="0" x2="0" y2="0" stroke="black" stroke-width="2" id="line4"></line>
+</svg>
+
+</div>
+
+<script>
+
+const selectedBoxes = Array(5).fill(null);
+
+function selectBox(columnNumber, boxIndex, text) {
+    // Deselect any previously selected box in this column
+    const column = document.getElementById(`column${columnNumber}`);
+    const boxes = column.getElementsByClassName('box');
+    for (let box of boxes) {
+        box.classList.remove('selected');
+    }
+
+    // Highlight the selected box
+    event.target.classList.add('selected');
+
+    // Display the selected text at the bottom of the column
+    const selectedText = document.getElementById(`selected${columnNumber}`);
+    selectedText.textContent = text;
+
+    // Update the selected box in the column
+    selectedBoxes[columnNumber - 1] = event.target;
+
+    // Update the highlighted text display with all selected texts
+    const selectedTexts = selectedBoxes.map((box, index) => {
+        if (box !== null) {
+            const header = document.querySelector(`#column${index + 1} .header`).textContent;
+            return `${header}: ${box.textContent}`;
+        }
+        return null;
+    }).filter(item => item !== null);
+
+    document.getElementById('highlightedText').innerHTML = selectedTexts.join('<br>');
+
+    // Clear the lines
+    clearLines();
+
+    // Draw lines between sequentially selected boxes
+    for (let i = 0; i < 4; i++) {
+        if (selectedBoxes[i] && selectedBoxes[i + 1]) {
+            drawLine(i + 1, selectedBoxes[i], selectedBoxes[i + 1]);
+        }
+    }
+}
+
+function drawLine(lineNumber, box1, box2) {
+    const rect1 = box1.getBoundingClientRect();
+    const rect2 = box2.getBoundingClientRect();
+    const x1 = rect1.left + rect1.width / 2;
+    const y1 = rect1.top + rect1.height / 2;
+    const x2 = rect2.left + rect2.width / 2;
+    const y2 = rect2.top + rect2.height / 2;
+    const line = document.getElementById(`line${lineNumber}`);
+    line.setAttribute('x1', x1);
+    line.setAttribute('y1', y1);
+    line.setAttribute('x2', x2);
+    line.setAttribute('y2', y2);
+}
+
+function clearLines() {
+    for (let i = 1; i <= 4; i++) {
+        const line = document.getElementById(`line${i}`);
+        line.setAttribute('x1', 0);
+        line.setAttribute('y1', 0);
+        line.setAttribute('x2', 0);
+        line.setAttribute('y2', 0);
+    }
+}
+</script>
+
+</body>
+</html>
